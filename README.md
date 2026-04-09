@@ -1,62 +1,108 @@
 # OpenClaw Skills Repository
 
-清风、明月等 AI 助手的共享技能仓库。
+这是当前主工作目录下的本地 skills 仓库：
 
-## 使用方法
+- **路径**：`F:\OpenClaw_Soul\workspace\skills`
+- **用途**：存放清风当前实际使用、维护、发布的 OpenClaw skills
+- **同步方式**：由 `skill-publisher` 负责与 GitHub 仓库 `goutou08/openclaw-skills` 同步
 
-### 克隆仓库
+> 说明：当前仓库已经直接以 `workspace/skills` 作为 git 工作目录，不再使用旧的 `openclaw-skills/skills/` 子目录结构。
 
-```bash
-git clone https://github.com/goutou08/openclaw-skills.git
-cd openclaw-skills
+---
+
+## 当前包含的 skills
+
+- `auto-task-runner` — Markdown 任务队列 / 协作式任务 runner
+- `browser-setup` — OpenClaw 浏览器配置与排障
+- `browser-share` — 复用用户已有 Chrome 登录态
+- `chatgpt-multi-turn` — ChatGPT Web 多轮对话归档研究
+- `memory` — 记忆管理与 session 提炼
+- `network-proxy` — PowerShell / CLI 代理配置
+- `openai-codex-gateway` — 大陆网络环境下的 Codex + Gateway 连通性修复
+- `skill-publisher` — skills 仓库同步与发布
+
+详细索引见：`SKILLS.md`
+
+---
+
+## 仓库结构
+
+```text
+workspace/skills/
+├── README.md
+├── SKILLS.md
+├── auto-task-runner/
+├── browser-setup/
+├── browser-share/
+├── chatgpt-multi-turn/
+├── memory/
+├── network-proxy/
+├── openai-codex-gateway/
+└── skill-publisher/
 ```
 
-### 安装单个 skill
+---
 
-```bash
-# 方式1：复制到 workspace skills 目录
-cp -r skills/<skill-name> ~/.openclaw/skills/
+## 使用方式
 
-# 方式2：创建符号链接（推荐）
-ln -s "$(pwd)/skills/<skill-name>" ~/.openclaw/skills/<skill-name>
-```
+### 作为本地工作目录使用
 
-### 安装所有 skills
+当前目录本身就是 OpenClaw 的本地 skills 工作目录，可直接在这里：
 
-```bash
-# 复制所有 skills 到 OpenClaw workspace
-cp -r skills/* ~/.openclaw/skills/
-```
+- 新建 skill
+- 编辑 skill
+- 测试 skill
+- git 提交 / push
 
-## 目录结构
+### 同步到 GitHub
 
-```
-openclaw-skills/
-├── README.md           # 本文件
-├── SKILLS.md          # Skills 索引和使用说明
-└── skills/
-    ├── opencli/       # OpenCLI 通用 CLI 工具（支持 70+ 网站）
-    ├── browser-setup/ # OpenClaw 浏览器工具配置
-    ├── gateway-monitor/ # OpenClaw 网关健康监控
-    └── sonoscli/      # Sonos 音响控制
-```
+使用 `skill-publisher` 所描述的同步流程：
 
-## 贡献指南
+- `gitPath = F:\OpenClaw_Soul\workspace\skills`
+- `skillsPath = F:\OpenClaw_Soul\workspace\skills`
+
+也就是：
+
+> 这里既是本地技能目录，也是 git 仓库目录。
+
+---
+
+## 维护约定
 
 ### 添加新 skill
 
-1. 在 `skills/` 目录下创建新的 skill 文件夹
-2. 每个 skill 必须包含 `SKILL.md` 文件
-3. 更新 `SKILLS.md` 索引
-4. 提交 PR 或直接 push
+1. 在仓库根目录下创建一个新文件夹
+2. 每个 skill 至少包含 `SKILL.md`
+3. 如有需要，可加入：
+   - `scripts/`
+   - `references/`
+   - `assets/`
+4. 更新 `SKILLS.md`
+5. 提交并 push
 
 ### Skill 规范
 
-- Skill 名称使用小写字母和连字符
-- 每个 skill 包含详细的 `SKILL.md`
-- 包含必要的 scripts、references 等资源
+- 目录名使用小写字母和连字符
+- 每个 skill 必须有 `SKILL.md`
+- 优先保持目录简洁，避免无用文档堆积
+- 敏感配置不要写进共享文件
+
+---
+
+## 已移出当前工作目录的内容
+
+以下内容不再保留在当前仓库主目录中：
+
+- `opencli`
+- `dist`
+- `gateway-monitor`
+- `sonoscli`
+
+如果需要，可从历史提交或备份目录恢复。
+
+---
 
 ## 维护者
 
-- 清风 (清风的 OpenClaw)
-- 明月 (明月的 OpenClaw)
+- 清风
+- 明月（协作方 / 共享方）
